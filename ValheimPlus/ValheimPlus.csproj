@@ -272,6 +272,7 @@
     <Compile Include="RPC\VPlusMapSync.cs" />
     <Compile Include="GameClasses\Minimap.cs" />
     <Compile Include="GameClasses\Smelter.cs" />
+    <Compile Include="GameClasses\SmelterDiagnostics.cs" />
     <Compile Include="Utility\HttpHelper.cs" />
     <Compile Include="GameClasses\Vagon.cs" />
     <Compile Include="GameClasses\WearNTear.cs" />

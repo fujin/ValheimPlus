@@ -14,6 +14,7 @@ namespace ValheimPlus.Configurations.Sections
         private ConfigEntry<bool> autoFuelEntry;
         private ConfigEntry<bool> ignorePrivateAreaCheckEntry;
         private ConfigEntry<float> autoRangeEntry;
+        private ConfigEntry<bool> diagnosticLoggingEntry;
 
         public int maximumOre => maximumOreEntry.Value;
         public int maximumCoal => maximumCoalEntry.Value;
@@ -23,11 +24,14 @@ namespace ValheimPlus.Configurations.Sections
         public bool autoFuel => autoFuelEntry.Value;
         public bool ignorePrivateAreaCheck => ignorePrivateAreaCheckEntry.Value;
         public float autoRange => autoRangeEntry.Value;
+        public bool diagnosticLogging => diagnosticLoggingEntry?.Value ?? false;
 
         public override void Bind(ConfigFile config)
         {
             BindEnabled(config, Section, false,
                 "Change false to true to enable this section.");
+            diagnosticLoggingEntry = BindLocal(config, Section, "diagnosticLogging", false,
+                "Log smelter, kiln and blast furnace interactions, ownership and queue state for troubleshooting. Set separately on server and clients. Does not require this section to be enabled.");
             maximumOreEntry = Bind(config, Section, "maximumOre", 10,
                 "Maximum amount of ore in a Smelter.");
             maximumCoalEntry = Bind(config, Section, "maximumCoal", 20,

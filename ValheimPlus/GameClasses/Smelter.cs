@@ -153,6 +153,11 @@ namespace ValheimPlus.GameClasses
             }
             bool spawn(float autoDepositRange, bool ignorePrivateAreaCheck)
             {
+                // Vanilla also tolerates an obsolete/missing conversion when flushing saved output,
+                // including from OnDestroyed. Do not abort that call by dereferencing it here.
+                Smelter.ItemConversion conversion = smelter.GetItemConversion(ore);
+                if (conversion == null || conversion.m_to == null) return true;
+
                 List<Container> nearbyChests = InventoryAssistant.GetNearbyChestsForMachine(smelter.gameObject, autoDepositRange, !ignorePrivateAreaCheck);
                 if (nearbyChests.Count == 0)
                     return true;
@@ -163,7 +168,8 @@ namespace ValheimPlus.GameClasses
                     autoDepositRange = 1;
 
                 // Replicating original code, just "spawning/adding" the item inside the chest makes it "not have a prefab"
-                GameObject itemPrefab = ObjectDB.instance.GetItemPrefab(smelter.GetItemConversion(ore).m_to.gameObject.name);
+                GameObject itemPrefab = ObjectDB.instance.GetItemPrefab(conversion.m_to.gameObject.name);
+                if (itemPrefab == null) return true;
 
                 // Also replication of original code, really have no idead what it is for, didn't bother look
                 ZNetView.m_forceDisableInit = true;
