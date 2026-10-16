@@ -40,10 +40,10 @@ namespace ValheimPlus
         internal const string MinRequiredNumericVersion = NumericVersion;
 
         // The lowest game version this version of V+ is known to work with.
-        private static readonly GameVersion MinSupportedGameVersion = new(1, 0, 12);
+        private static readonly GameVersion MinSupportedGameVersion = new(1, 0, 20);
 
         // The game version this version of V+ was compiled against.
-        private static readonly GameVersion TargetGameVersion = new(1, 0, 15);
+        private static readonly GameVersion TargetGameVersion = new(1, 0, 20);
 
         // Versions we know for sure will not work with this game version.
         // Useful if a PTB is active to exclude it from the stable release.

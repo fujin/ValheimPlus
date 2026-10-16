@@ -1,4 +1,4 @@
-# Shared map pins (experimental, Valheim 1.0.16)
+# Shared map pins (experimental, Valheim 1.0.20)
 
 ## Enable
 
@@ -46,7 +46,7 @@ This implementation hooks the end of vanilla's naming flow instead of every AddP
 
 ## Validation
 
-The source builds against the locally installed Valheim 1.0.16 game assemblies and BepInEx 5.4.23.5. The removed V+ code and current Minimap, ZNet, ZNetPeer and ZRoutedRpc methods were inspected, including current name-input finalization, pin selection, save/export filters and peer identity APIs.
+The source builds against the locally installed Valheim 1.0.20 game assemblies and BepInEx 5.4.23.5. The removed V+ code and current Minimap, ZNet, ZNetPeer and ZRoutedRpc methods were inspected, including current name-input finalization, pin selection, save/export filters and peer identity APIs.
 
 The automated suite links the production sources and uses independent simulated peers with serialized messages. It covers persistence, private/default-public creation, late joins, final names, replay rejection, owner/admin authorization, checking, atomic-save failure, save/export exclusion, congestion, multi-page snapshots with intervening changes, server restart and TXC conflict detection. It is not a Unity runtime or Linux dedicated-server test.
 
